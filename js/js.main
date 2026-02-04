@@ -1,0 +1,4 @@
+function checkVIP() {
+  // Later you can connect login & payment here
+  console.log("VIP check running");
+}

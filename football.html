@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Football VVIP</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body onload="checkVIP()">
+
+<header>
+  <h1>THE REALEST TIPS</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="free-tips.html">Free Tips</a>
+    <a href="football.html">Football</a>
+    <a href="basketball.html">Basketball</a>
+    <a href="results.html">Results</a>
+    <a href="about-us.html">About Us</a>
+    <a href="contact-us.html">Contact Us</a>
+  </nav>
+</header>
+
+<main class="container">
+  <div class="card locked vip-hero">
+    <div class="vip-overlay">
+      <h2>🔒 VVIP Content Locked</h2>
+      <p>Please login and subscribe to access Football VVIP tips.</p>
+      <div class="vip-actions">
+        <button id="subscribe-btn" class="vip-subscribe">Subscribe</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="js/main.js"></script>
+<script type="module" src="js/firebase.js"></script>
+<script type="module" src="js/auth.js"></script>
+<script>
+  // Ensure checkVIP runs after auth module has registered it
+  if (typeof checkVIP === 'function') {
+    checkVIP();
+  } else {
+    window.addEventListener('load', () => { if (typeof checkVIP === 'function') checkVIP(); });
+  }
+</script>
+<script type="module">
+  import { initPayment } from './js/payment.js';
+  document.addEventListener('DOMContentLoaded', () => initPayment('#subscribe-btn'));
+</script>
+</body>
+</html>

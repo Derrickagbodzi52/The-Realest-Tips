@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment Success</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <h1>THE REALEST TIPS</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="free-tips.html">Free Tips</a>
+    <a href="football.html">Football</a>
+    <a href="basketball.html">Basketball</a>
+    <a href="results.html">Results</a>
+    <a href="about-us.html">About Us</a>
+    <a href="contact-us.html">Contact Us</a>
+    <div id="auth-buttons" class="auth-panel">
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+    </div>
+    <div id="user-menu" class="auth-panel hidden">
+      <span id="user-email"></span>
+      <button onclick="logout()" class="logout-btn">Sign Out</button>
+    </div>
+  </nav>
+</header>
+
+<main class="container">
+  <div class="card">
+    <h2>Payment Successful</h2>
+    <p>Thank you for your subscription — your payment was successful.</p>
+    <p>You can now access the VVIP tips. Choose a category below:</p>
+
+    <div class="success-actions">
+      <a class="vip-link" href="football.html">Go to Football VVIP</a>
+      <a class="vip-link" href="basketball.html">Go to Basketball VVIP</a>
+    </div>
+  </div>
+</main>
+
+<script src="js/main.js"></script>
+<script type="module" src="js/firebase.js"></script>
+<script type="module" src="js/auth.js"></script>
+<script type="module">
+  import { auth } from './js/firebase.js';
+  import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+
+  onAuthStateChanged(auth, user => {
+    const authButtons = document.getElementById('auth-buttons');
+    const userMenu = document.getElementById('user-menu');
+    const userEmail = document.getElementById('user-email');
+    if (user) {
+      authButtons.classList.add('hidden');
+      userMenu.classList.remove('hidden');
+      userEmail.textContent = user.email;
+      // Record subscription in backend DB using ID token for verification
+      user.getIdToken().then(token => {
+        fetch('http://localhost:5000/api/subscription', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+          body: JSON.stringify({ plan: 'VVIP' })
+        })
+        .then(res => res.json())
+        .then(data => console.log('Subscription saved:', data))
+        .catch(err => console.error('Subscription error:', err));
+      }).catch(err => console.error('Failed to get ID token:', err));
+    } else {
+      authButtons.classList.remove('hidden');
+      userMenu.classList.add('hidden');
+      userEmail.textContent = '';
+    }
+  });
+</script>
+</body>
+</html>
