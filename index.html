@@ -18,13 +18,17 @@
     <a href="results.html">Results</a>
     <a href="about-us.html">About Us</a>
     <a href="contact-us.html">Contact Us</a>
+
+    <!-- AUTH BUTTONS -->
     <div id="auth-buttons" class="auth-panel">
-      <a href="login.html">Login</a>
-      <a href="register.html">Register</a>
+      <a href="login.html" id="loginBtn">Login</a>
+      <a href="register.html" id="registerBtn">Register</a>
     </div>
+
+    <!-- USER MENU -->
     <div id="user-menu" class="auth-panel hidden">
       <span id="user-email"></span>
-      <button onclick="logout()" class="logout-btn">Sign Out</button>
+      <button id="logoutBtn" class="logout-btn">Sign Out</button>
     </div>
   </nav>
 </header>
@@ -97,29 +101,42 @@
 
 </main>
 
+<!-- SCRIPTS -->
 <script src="js/main.js"></script>
 <script src="js/firebase.js" type="module"></script>
-<script src="js/auth.js" type="module"></script>
+
 <script type="module">
-  import { auth } from "./js/firebase.js";
-  import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { auth } from "./js/firebase.js";
+import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-  // Check authentication status and animate toggles
-  onAuthStateChanged(auth, user => {
-    const authButtons = document.getElementById("auth-buttons");
-    const userMenu = document.getElementById("user-menu");
-    const userEmail = document.getElementById("user-email");
+// Get HTML elements
+const authButtons = document.getElementById("auth-buttons");
+const userMenu = document.getElementById("user-menu");
+const userEmail = document.getElementById("user-email");
+const logoutBtn = document.getElementById("logoutBtn");
 
-    if (user) {
-      authButtons.classList.add('hidden');
-      userMenu.classList.remove('hidden');
-      userEmail.textContent = user.email;
-    } else {
-      authButtons.classList.remove('hidden');
-      userMenu.classList.add('hidden');
-      userEmail.textContent = '';
-    }
+// Monitor login state
+onAuthStateChanged(auth, user => {
+  if (user) {
+    authButtons.classList.add('hidden');
+    userMenu.classList.remove('hidden');
+    userEmail.textContent = user.email;
+  } else {
+    authButtons.classList.remove('hidden');
+    userMenu.classList.add('hidden');
+    userEmail.textContent = '';
+  }
+});
+
+// Logout function
+logoutBtn.addEventListener("click", () => {
+  signOut(auth).then(() => {
+    window.location.href = "index.html";
+  }).catch((error) => {
+    alert(error.message);
   });
+});
 </script>
+
 </body>
 </html>
