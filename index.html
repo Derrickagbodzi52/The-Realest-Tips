@@ -9,42 +9,49 @@
 <body>
 
 <header>
-  <h1>THE REALEST TIPS</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="free-tips.html">Free Tips</a>
-    <a href="football.html">Football</a>
-    <a href="basketball.html">Basketball</a>
-    <a href="results.html">Results</a>
-    <a href="about-us.html">About Us</a>
-    <a href="contact-us.html">Contact Us</a>
-
-    <!-- AUTH BUTTONS -->
-    <div id="auth-buttons" class="auth-panel">
-      <a href="login.html" id="loginBtn">Login</a>
-      <a href="register.html" id="registerBtn">Register</a>
+  <div class="top-bar">
+    <span class="top-time" id="topTime"></span>
+  </div>
+  <div class="main-header">
+      <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    <div class="logo-area left-align">
+      <span class="logo-text all-caps">THE REALEST TIPS</span>
     </div>
-
-    <!-- USER MENU -->
-    <div id="user-menu" class="auth-panel hidden">
-      <span id="user-email"></span>
-      <button id="logoutBtn" class="logout-btn">Sign Out</button>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="mobile-menu-label">MENU</span>
+    </button>
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html">HOME</a>
+      <a href="about-us.html">ABOUT US</a>
+      <a href="football.html">VIP PAGE</a>
+      <a href="contact-us.html">CONTACT US</a>
+    </nav>
+    <div class="header-auth right-align">
+      <div id="auth-buttons" class="auth-panel">
+        <a href="login.html" id="loginBtn" class="btn-green">LOG IN</a>
+        <a href="register.html" id="registerBtn" class="btn-white">SIGN UP</a>
+      </div>
+      <div id="user-menu" class="auth-panel hidden">
+        <span id="user-email"></span>
+        <button id="logoutBtn" class="logout-btn" style="display:none;">Sign Out</button>
+      </div>
     </div>
-  </nav>
+  </div>
 </header>
 
 <main class="container">
 
-  <div class="hero-section">
-    <div class="hero-overlay">
-      <h2>Your Trusted Sports Betting Tips Source</h2>
-      <p>Get accurate predictions, expert analysis, and winning strategies for football and basketball</p>
-      <div class="hero-cta">
-        <a href="free-tips.html" class="btn btn-primary">View Free Tips</a>
-        <a href="football.html" class="btn btn-secondary">Explore VVIP</a>
+  <section class="hero-section-new">
+    <div class="hero-content">
+      <div class="hero-btns">
+        
       </div>
     </div>
-  </div>
+    <div class="hero-image"></div>
+  </section>
 
   <div class="card">
     <h3>📊 What We Offer</h3>
@@ -106,29 +113,69 @@
 <script src="js/firebase.js" type="module"></script>
 
 <script type="module">
+// Mobile menu toggle with overlay and scroll lock
+const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+if (mobileMenuBtn && mainNav && mobileNavOverlay) {
+  function openMobileMenu() {
+    mainNav.classList.add('show-mobile-nav');
+    mobileMenuBtn.classList.add('open');
+    mobileNavOverlay.classList.add('show-overlay');
+    document.body.classList.add('no-scroll');
+  }
+  function closeMobileMenu() {
+    mainNav.classList.remove('show-mobile-nav');
+    mobileMenuBtn.classList.remove('open');
+    mobileNavOverlay.classList.remove('show-overlay');
+    document.body.classList.remove('no-scroll');
+  }
+  mobileMenuBtn.addEventListener('click', () => {
+    if (mainNav.classList.contains('show-mobile-nav')) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
+  });
+  mobileNavOverlay.addEventListener('click', closeMobileMenu);
+  // Close menu when a nav link is clicked (mobile only)
+  mainNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 900) {
+        closeMobileMenu();
+      }
+    });
+  });
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mainNav.classList.contains('show-mobile-nav')) {
+      closeMobileMenu();
+    }
+  });
+}
 import { auth } from "./js/firebase.js";
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-// Get HTML elements
 const authButtons = document.getElementById("auth-buttons");
 const userMenu = document.getElementById("user-menu");
 const userEmail = document.getElementById("user-email");
 const logoutBtn = document.getElementById("logoutBtn");
 
-// Monitor login state
+// Hide logout button by default
+logoutBtn.style.display = "none";
+
 onAuthStateChanged(auth, user => {
   if (user) {
     authButtons.classList.add('hidden');
     userMenu.classList.remove('hidden');
     userEmail.textContent = user.email;
+    logoutBtn.style.display = "inline-block";
   } else {
     authButtons.classList.remove('hidden');
     userMenu.classList.add('hidden');
     userEmail.textContent = '';
+    logoutBtn.style.display = "none";
   }
 });
 
-// Logout function
 logoutBtn.addEventListener("click", () => {
   signOut(auth).then(() => {
     window.location.href = "index.html";

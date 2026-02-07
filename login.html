@@ -47,12 +47,30 @@
 </head>
 <body>
 
-<div class="box">
-  <h2>Login</h2>
-  <input type="email" id="email" placeholder="Email" required>
-  <input type="password" id="password" placeholder="Password" required>
-  <button onclick="login()">Login</button>
-  <p>No account? <a href="register.html">Register</a></p>
+<div class="auth-container">
+  <div class="auth-image-col">
+    <img src="images/debwoy1.png" alt="Footballer" class="auth-side-img">
+  </div>
+  <div class="auth-form-col">
+    <div class="auth-logo-row">
+      <a href="index.html" class="auth-home-icon" title="Home">🏠</a>
+      <span class="auth-logo-text">The Realest Tips</span>
+    </div>
+    <h2 class="auth-title">Log In to your account</h2>
+    <form onsubmit="login(); return false;" class="auth-form">
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Eg. john.doe@example.com" required>
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="************" required>
+      <button type="submit" class="auth-btn">Log In</button>
+    </form>
+    <div class="auth-links">
+      <a href="#" class="auth-link">Forgot password?</a>
+      <div>
+        <span>Don't have an account?</span> <a href="register.html" class="auth-link">Register here</a>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script type="module" src="js/firebase.js"></script>
