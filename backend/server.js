@@ -6,31 +6,34 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// MongoDB Atlas integration
+const { createUser, findUserByEmail } = require('./userModel');
+
 // Middleware
 app.use(cors());
 app.use(express.json());
 
-// Email configuration
-const transporter = nodemailer.createTransport({
-  service: process.env.EMAIL_SERVICE || 'gmail',
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASSWORD
+// Register user endpoint
+app.post('/api/register', async (req, res) => {
+  try {
+    const { email, password, name } = req.body;
+    if (!email || !password || !name) {
+      return res.status(400).json({ error: 'All fields are required' });
+    }
+    // Check if user already exists
+    const existing = await findUserByEmail(email);
+    if (existing) {
+      return res.status(409).json({ error: 'User already exists' });
+    }
+    // Store user (hash password in production!)
+    await createUser({ email, password, name, createdAt: new Date() });
+    return res.status(201).json({ success: true, message: 'User registered successfully' });
+  } catch (err) {
+    console.error('Register error:', err);
+    return res.status(500).json({ error: 'Server error' });
   }
 });
-
-// Manual Firebase ID token verification using Google's public keys
-const jwt = require('jsonwebtoken');
-const fetch = (...args) => import('node-fetch').then(({default: f}) => f(...args));
-
-const FIREBASE_PROJECT_ID = process.env.FIREBASE_PROJECT_ID;
-if (!FIREBASE_PROJECT_ID) {
-  console.warn('Warning: FIREBASE_PROJECT_ID not set. Token audience/issuer checks will fail until set.');
-}
-
-let cachedCerts = null;
-let certsExpiry = 0;
-
+// ...existing code...
 async function getFirebaseCerts() {
   const now = Date.now();
   if (cachedCerts && now < certsExpiry) return cachedCerts;

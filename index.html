@@ -1,3 +1,11 @@
+    <style>
+      .auth-large img {
+        width: 18px;
+        height: 18px;
+        vertical-align: middle;
+        margin-right: 0.4em;
+      }
+    </style>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,37 +25,66 @@
     <div class="logo-area left-align">
       <span class="logo-text all-caps">THE REALEST TIPS</span>
     </div>
+      <style>
+        .logo-text {
+          font-size: 2.5rem;
+          font-weight: 900;
+          letter-spacing: 0.12em;
+          color: #1db954;
+        }
+        @media (max-width: 600px) {
+          .logo-text {
+            font-size: 1.6rem;
+          }
+        }
+      </style>
     <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="mobile-menu-label">MENU</span>
-    </button>
+      </button>
     <nav class="main-nav" id="mainNav">
       <a href="index.html">HOME</a>
-      <a href="about-us.html">ABOUT US</a>
-      <a href="football.html">VIP PAGE</a>
-      <a href="contact-us.html">CONTACT US</a>
+      <a href="free-tips.html">Free Tips</a>
+      <a href="football.html">Football VIP</a>
+      <a href="past-result.html">Past Result</a>
+      <!-- Login and Sign Up links removed from main navigation -->
     </nav>
-    <div class="header-auth right-align">
+    <div class="header-auth right-align" style="position:absolute; top:1.2rem; right:2rem; z-index:10;">
       <div id="auth-buttons" class="auth-panel">
-        <a href="login.html" id="loginBtn" class="btn-green">LOG IN</a>
-        <a href="register.html" id="registerBtn" class="btn-white">SIGN UP</a>
+        <a href="login.html" id="loginBtn" class="btn-green auth-large">LOG IN</a>
+        <a href="register.html" id="registerBtn" class="btn-white auth-large">Create Account</a>
       </div>
       <div id="user-menu" class="auth-panel hidden">
         <span id="user-email"></span>
         <button id="logoutBtn" class="logout-btn" style="display:none;">Sign Out</button>
       </div>
     </div>
+    <style>
+      .auth-large {
+        font-size: 1.25rem !important;
+        font-weight: 700;
+        padding: 0.6em 1.2em;
+      }
+      @media (max-width: 600px) {
+        .header-auth.right-align {
+          right: 0.5rem;
+        }
+        .auth-large {
+          font-size: 1rem !important;
+        }
+      }
+    </style>
   </div>
 </header>
 
-<main class="container">
 
+<main class="container">
   <section class="hero-section-new">
     <div class="hero-content">
       <div class="hero-btns">
-        
+        <!-- ...existing code... -->
       </div>
     </div>
     <div class="hero-image"></div>
@@ -106,6 +143,14 @@
     </ul>
   </div>
 
+  <footer style="margin-top: 2rem; text-align: center; padding: 2rem 0; background: #f4f6f8; border-top: 1px solid #e0e0e0;">
+    <div style="margin-bottom: 0.8em;">
+      <a href="about-us.html" style="color: #007bff; font-weight: 500; text-decoration: underline; margin-right: 1.5em;">About Us</a>
+      <a href="contact-us.html" style="color: #007bff; font-weight: 500; text-decoration: underline; margin-right: 1.5em;">Contact Support</a>
+      <!-- Free Tips link moved to main navigation -->
+    </div>
+    <div style="color: #888; font-size: 0.95em;">&copy; 2026 The Realest Tips. All rights reserved.</div>
+  </footer>
 </main>
 
 <!-- SCRIPTS -->
