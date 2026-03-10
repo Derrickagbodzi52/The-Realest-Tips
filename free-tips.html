@@ -3,63 +3,162 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Free Tips</title>
+  <title>Free Tips - The Realest Tips</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <header>
-  <h1>THE REALEST TIPS</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="free-tips.html">Free Tips</a>
-    <a href="football.html">Football</a>
-    <a href="basketball.html">Basketball</a>
-    <a href="results.html">Results</a>
-    <a href="about-us.html">About Us</a>
-    <a href="contact-us.html">Contact Us</a>
-    <div id="auth-buttons" class="auth-panel">
-      <a href="login.html">Login</a>
-      <a href="register.html">Register</a>
+  <div class="main-header">
+    <div class="logo-area">
+      <a href="index.html" class="logo-text">THE REALEST TIPS</a>
     </div>
-    <div id="user-menu" class="auth-panel hidden">
-      <span id="user-email"></span>
-      <button onclick="logout()" class="logout-btn">Sign Out</button>
-    </div>
-  </nav>
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="free-tips.html" style="color: #1db954;">Free Tips</a>
+      <a href="football.html">Football</a>
+      <a href="basketball.html">Basketball</a>
+      <a href="results.html">Results</a>
+    </nav>
+  </div>
+  
+  <div id="auth-buttons" class="auth-panel">
+    <a href="login.html">Login</a>
+    <a href="register.html">Register</a>
+  </div>
+  <div id="user-menu" class="auth-panel hidden">
+    <span id="user-email"></span>
+    <button onclick="logout()" class="logout-btn">Sign Out</button>
+  </div>
 </header>
 
 <main class="container">
-  <div class="card">
-    <h2>🏆 Free Tips</h2>
-    <p>Get free daily predictions to start winning today!</p>
+  <div class="card" style="background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 15px;">
+    <h2 style="margin: 0;">🏆 Free Tips</h2>
+    <p style="margin: 5px 0 0 0; color: #555;">Get free daily predictions to start winning today!</p>
   </div>
 
-  <div class="card tips-card">
-    <h3>🏆 MULTI BET (3 Games)</h3>
-    <p class="tips-odds">Total Odds: 5.12</p>
+  <div class="bet-card">
+    <h3>🏆 MULTI BET (15 Games)</h3>
+    <p class="odds">Total Odds: 25.40</p>
 
-    <div class="tip-item">
-      <div class="tip-number">1️⃣</div>
-      <div class="tip-detail">
-        <strong>Manchester City vs Aston Villa</strong><br>
-        <span class="tip-prediction">👉 Manchester City to Win</span>
+    <div class="match">
+      <div class="match-number">1</div>
+      <div class="match-details">
+        <p class="teams">Manchester City vs Aston Villa</p>
+        <p class="prediction">👉 Manchester City to Win</p>
       </div>
     </div>
 
-    <div class="tip-item">
-      <div class="tip-number">2️⃣</div>
-      <div class="tip-detail">
-        <strong>Real Madrid vs Sevilla</strong><br>
-        <span class="tip-prediction">👉 Over 2.5 Goals</span>
+    <div class="match">
+      <div class="match-number">2</div>
+      <div class="match-details">
+        <p class="teams">Real Madrid vs Sevilla</p>
+        <p class="prediction">👉 Over 2.5 Goals</p>
       </div>
     </div>
 
-    <div class="tip-item">
-      <div class="tip-number">3️⃣</div>
-      <div class="tip-detail">
-        <strong>Inter Milan vs Lazio</strong><br>
-        <span class="tip-prediction">👉 Inter Milan to Win</span>
+    <div class="match">
+      <div class="match-number">3</div>
+      <div class="match-details">
+        <p class="teams">Inter Milan vs Lazio</p>
+        <p class="prediction">👉 Inter Milan to Win</p>
+      </div>
+    </div>
+
+    <div class="match">
+      <div class="match-number">4</div>
+      <div class="match-details">
+        <p class="teams">Arsenal vs Brighton</p>
+        <p class="prediction">👉 Arsenal to Win</p>
+      </div>
+    </div>
+
+    <div class="match">
+      <div class="match-number">5</div>
+      <div class="match-details">
+        <p class="teams">Barcelona vs Valencia</p>
+        <p class="prediction">👉 Over 1.5 Goals</p>
+      </div>
+    </div>
+
+    <div class="match">
+      <div class="match-number">6</div>
+      <div class="match-details">
+        <p class="teams">Bayern Munich vs Dortmund</p>
+        <p class="prediction">👉 Both Teams To Score</p>
+      </div>
+    </div>
+
+    <div class="match">
+      <div class="match-number">7</div>
+      <div class="match-details">
+        <p class="teams">Juventus vs Napoli</p>
+        <p class="prediction">👉 Over 2.5 Goals</p>
+      </div>
+    </div>
+
+    <div class="match">
+      <div class="match-number">8</div>
+      <div class="match-details">
+        <p class="teams">PSG vs Lyon</p>
+        <p class="prediction">👉 PSG to Win</p>
+      </div>
+    </div>
+
+    <div class="match">
+      <div class="match-number">9</div>
+      <div class="match-details">
+        <p class="teams">AC Milan vs Roma</p>
+        <p class="prediction">👉 Over 1.5 Goals</p>
+      </div>
+    </div>
+
+    <div class="match">
+      <div class="match-number">10</div>
+      <div class="match-details">
+        <p class="teams">Chelsea vs Tottenham</p>
+        <p class="prediction">👉 Both Teams To Score</p>
+      </div>
+    </div>
+
+    <div class="match">
+      <div class="match-number">11</div>
+      <div class="match-details">
+        <p class="teams">Ajax vs PSV</p>
+        <p class="prediction">👉 Over 2.5 Goals</p>
+      </div>
+    </div>
+
+    <div class="match">
+      <div class="match-number">12</div>
+      <div class="match-details">
+        <p class="teams">Porto vs Benfica</p>
+        <p class="prediction">👉 Benfica to Win</p>
+      </div>
+    </div>
+
+    <div class="match">
+      <div class="match-number">13</div>
+      <div class="match-details">
+        <p class="teams">Atletico Madrid vs Villarreal</p>
+        <p class="prediction">👉 Atletico Madrid to Win</p>
+      </div>
+    </div>
+
+    <div class="match">
+      <div class="match-number">14</div>
+      <div class="match-details">
+        <p class="teams">Leverkusen vs Leipzig</p>
+        <p class="prediction">👉 Over 2.5 Goals</p>
+      </div>
+    </div>
+
+    <div class="match">
+      <div class="match-number">15</div>
+      <div class="match-details">
+        <p class="teams">Galatasaray vs Fenerbahce</p>
+        <p class="prediction">👉 Both Teams To Score</p>
       </div>
     </div>
   </div>
@@ -68,24 +167,5 @@
 <script src="js/main.js"></script>
 <script type="module" src="js/firebase.js"></script>
 <script type="module" src="js/auth.js"></script>
-<script type="module">
-  import { auth } from './js/firebase.js';
-  import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
-
-  onAuthStateChanged(auth, user => {
-    const authButtons = document.getElementById('auth-buttons');
-    const userMenu = document.getElementById('user-menu');
-    const userEmail = document.getElementById('user-email');
-    if (user) {
-      authButtons.classList.add('hidden');
-      userMenu.classList.remove('hidden');
-      userEmail.textContent = user.email;
-    } else {
-      authButtons.classList.remove('hidden');
-      userMenu.classList.add('hidden');
-      userEmail.textContent = '';
-    }
-  });
-</script>
 </body>
 </html>

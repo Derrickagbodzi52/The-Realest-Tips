@@ -3,50 +3,114 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Football VVIP</title>
+  <title>Football VVIP - The Realest Tips</title>
   <link rel="stylesheet" href="css/style.css">
+  
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+
+  <style>
+    .vip-hero {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 20px;
+      margin-top: 20px;
+      position: relative;
+    }
+
+    .vip-overlay {
+      background: rgba(0, 0, 0, 0.75);
+      padding: 40px;
+      border-radius: 15px;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      max-width: 450px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 5;
+    }
+
+    .vip-actions {
+      position: relative;
+      z-index: 10; 
+      pointer-events: auto;
+    }
+
+    .btn-green, .btn-white {
+      cursor: pointer !important;
+      display: block;
+      width: 100%;
+      text-decoration: none;
+      text-align: center;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: bold;
+      border: none;
+      margin-top: 10px;
+    }
+    
+    .btn-green { background-color: #1db954; color: white; }
+    .btn-white { background-color: white; color: black; }
+  </style>
 </head>
 <body onload="checkVIP()">
 
 <header>
-  <h1>THE REALEST TIPS</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="free-tips.html">Free Tips</a>
-    <a href="football.html">Football</a>
-    <a href="basketball.html">Basketball</a>
-    <a href="results.html">Results</a>
-    <a href="about-us.html">About Us</a>
-    <a href="contact-us.html">Contact Us</a>
-  </nav>
+  <div class="top-bar">
+    <span class="top-time">Football VVIP Predictions</span>
+  </div>
+  <div class="main-header">
+    <div class="logo-area">
+      <a href="index.html" class="logo-text">THE REALEST TIPS</a>
+    </div>
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="free-tips.html">Free Tips</a>
+      <a href="football.html" style="color: #1db954;">Football</a>
+      <a href="basketball.html">Basketball</a>
+      <a href="past-result.html">Results</a>
+    </nav>
+  </div>
 </header>
 
 <main class="container">
   <div class="card locked vip-hero">
     <div class="vip-overlay">
-      <h2>🔒 VVIP Content Locked</h2>
-      <p>Please login and subscribe to access Football VVIP tips.</p>
-      <div class="vip-actions">
-        <button id="subscribe-btn" class="vip-subscribe">Subscribe</button>
+      <h2 style="color: #1db954; margin-bottom: 15px;">🔒 VVIP Content Locked</h2>
+      <p style="color: #fff; margin-bottom: 20px;">Please login and subscribe to access our premium Football VVIP tips and daily expert analysis.</p>
+      
+      <div id="standard-actions" class="vip-actions">
+        <a href="login.html" class="btn-green">Login to Access</a>
+        <button id="subscribe-btn" class="btn-white">Subscribe Now</button>
       </div>
-    </div>
-  </div>
-</main>
+
+      <div id="payment-confirmation-ui" style="display: none; margin-top: 20px; border-top: 1px solid #444; padding-top: 20px;">
+        <h3 style="color: #fff; margin-bottom: 10px;">Proceed to Payment</h3>
+        <p style="color: #bbb; font-size: 0.9rem;">You will be redirected to the payment page to complete your subscription.</p>
+        <div class="vip-actions" style="display: flex; gap: 10px; margin-top: 15px;">
+          <button id="cancel-btn" class="btn-white" style="flex: 1; margin-top: 0;">Cancel</button>
+          <button id="confirm-btn" class="btn-green" style="flex: 1; margin-top: 0;">Proceed</button>
+        </div>
+      </div>
+    </div> </div> </main>
+
+<footer style="margin-top: 2rem; text-align: center; padding: 2rem 0; color: #888;">
+  &copy; 2026 The Realest Tips. All rights reserved.
+</footer>
 
 <script src="js/main.js"></script>
 <script type="module" src="js/firebase.js"></script>
 <script type="module" src="js/auth.js"></script>
-<script>
-  // Ensure checkVIP runs after auth module has registered it
-  if (typeof checkVIP === 'function') {
-    checkVIP();
-  } else {
-    window.addEventListener('load', () => { if (typeof checkVIP === 'function') checkVIP(); });
-  }
-</script>
+
 <script type="module">
   import { initPayment } from './js/payment.js';
-  document.addEventListener('DOMContentLoaded', () => initPayment('#subscribe-btn'));
+  
+  window.addEventListener('load', () => {
+    // We pass the ID of the main button to our helper script
+    initPayment('#subscribe-btn');
+  });
 </script>
+
 </body>
 </html>

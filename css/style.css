@@ -1,301 +1,5 @@
-/* --- AUTH PAGES (LOGIN/REGISTER) --- */
-.auth-container {
-  display: flex;
-  min-height: 100vh;
-  background: #f8fafd;
-  align-items: center;
-  justify-content: center;
-}
-.auth-image-col {
-  flex: 0 0 90px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  background: #fff;
-  border-radius: 16px 0 0 16px;
-  min-width: 60px;
-  min-height: 120px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  padding-top: 24px;
-}
-.auth-side-img {
-  max-width: 48px;
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin: 0 0 0 4px;
-}
-.auth-form-col {
-  flex: 1 1 80%;
-  background: #fff;
-  border-radius: 0 16px 16px 0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  padding: 24px 10px 18px 10px;
-  min-width: 180px;
-  max-width: 340px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-}
-.auth-logo-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 18px;
-}
-.auth-home-icon {
-  font-size: 1.7rem;
-  color: #00916e;
-  text-decoration: none;
-  margin-right: 2px;
-}
-.auth-logo-text {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: #222;
-  letter-spacing: 1px;
-}
-.auth-title {
-  color: #00916e;
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 24px;
-}
-.auth-form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.auth-form label {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #222;
-  margin-bottom: 2px;
-}
-.auth-form input {
-  width: 100%;
-  padding: 12px 10px;
-  border: 1.5px solid #e0e0e0;
-  border-radius: 6px;
-  font-size: 1rem;
-  margin-bottom: 8px;
-  background: #f8fafd;
-}
-.auth-btn {
-  width: 100%;
-  padding: 13px 0;
-  background: #00916e;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-top: 8px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.auth-btn:hover {
-  background: #007a5e;
-}
-.auth-links {
-  margin-top: 18px;
-  font-size: 1rem;
-  color: #222;
-}
-.auth-link {
-  color: #003366;
-  text-decoration: underline;
-  font-weight: 600;
-  margin-left: 4px;
-}
-.auth-link:hover {
-  color: #00916e;
-}
-@media (max-width: 900px) {
-  .auth-container {
-    flex-direction: column;
-    min-height: unset;
-    padding: 20px 0;
-  }
-  .auth-image-col, .auth-form-col {
-    border-radius: 24px;
-    min-width: 220px;
-    max-width: 98vw;
-    width: 100%;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-  }
-  .auth-image-col {
-    margin-bottom: 18px;
-    min-height: 180px;
-  }
-  .auth-form-col {
-    padding: 32px 12px 24px 12px;
-  }
-}
-/* --- MOBILE NAV OVERLAY & ANIMATION --- */
-.mobile-nav-overlay {
-  display: none;
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.35);
-  z-index: 1000;
-  transition: opacity 0.3s;
-  opacity: 0;
-}
-.mobile-nav-overlay.show-overlay {
-  display: block;
-  opacity: 1;
-}
-.main-nav {
-  transition: transform 0.3s, opacity 0.3s;
-}
-@media (max-width: 900px) {
-  .main-nav {
-    transform: translateX(-100vw);
-    opacity: 0;
-  }
-  .main-nav.show-mobile-nav {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  body.no-scroll {
-    overflow: hidden !important;
-    position: fixed;
-    width: 100vw;
-  }
-}
-/* --- MOBILE MENU BUTTON --- */
-.mobile-menu-btn {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 40px;
-  height: 40px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  margin-left: 10px;
-  z-index: 1002;
-}
-.mobile-menu-btn .bar {
-  width: 28px;
-  height: 4px;
-  background: #fff;
-  margin: 3px 0;
-  border-radius: 2px;
-  transition: 0.3s;
-}
-.mobile-menu-btn.open .bar:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-.mobile-menu-btn.open .bar:nth-child(2) {
-  opacity: 0;
-}
-.mobile-menu-btn.open .bar:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
-
-@media (max-width: 900px) {
-  .mobile-menu-btn {
-    display: flex;
-  }
-  .main-nav {
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 100vw;
-    background: #111;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
-    padding: 0;
-    z-index: 1001;
-    display: none;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-  }
-  .main-nav.show-mobile-nav {
-    display: flex;
-  }
-  .main-nav a {
-    width: 100%;
-    padding: 16px 24px;
-    border-bottom: 1px solid #222;
-    font-size: 17px;
-  }
-}
-/* --- RESPONSIVE DESIGN --- */
-@media (max-width: 900px) {
-  .main-header {
-    flex-direction: column;
-    height: auto;
-    padding: 0 10px;
-    gap: 10px;
-  }
-  .main-nav {
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    font-size: 15px;
-  }
-  .logo-text {
-    font-size: 1.5rem;
-  }
-  .header-auth {
-    margin-top: 8px;
-  }
-}
-
-@media (max-width: 600px) {
-  .main-header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0 4px;
-    gap: 6px;
-  }
-  .logo-text {
-    font-size: 1.1rem;
-    margin-bottom: 4px;
-  }
-  .main-nav {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-    font-size: 14px;
-    width: 100%;
-  }
-  .header-auth {
-    width: 100%;
-    justify-content: flex-start;
-    margin-top: 6px;
-  }
-  .btn-green, .btn-white {
-    width: 100%;
-    margin: 4px 0;
-    font-size: 15px;
-    padding: 10px 0;
-  }
-  .hero-section-new {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 20px 8px 0 8px;
-    min-height: 320px;
-  }
-  .hero-content {
-    max-width: 100%;
-    margin-bottom: 18px;
-  }
-  .hero-image {
-    width: 100%;
-    height: 180px;
-    background-size: contain;
-    margin: 0 auto;
-  }
-}
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap');
+/* --- GLOBAL RESET & FONTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700&display=swap');
 
 * {
   margin: 0;
@@ -306,51 +10,25 @@
 
 body {
   background: #f4f6f8;
+  color: #333;
+  overflow-x: hidden;
 }
 
-header {
-  background: #0b1c2d;
-  color: #2ecc71;
-  padding: 20px;
-  text-align: center;
+/* --- UTILITIES --- */
+.hidden {
+  display: none !important;
 }
 
-header h1 {
-  margin-bottom: 10px;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-
-nav a {
-  color: white;
-  margin: 0 10px;
-  text-decoration: none;
-  font-weight: 600;
-  font-family: 'Inter', sans-serif;;
-
-nav {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-
-/* --- ENOKAY69 STYLE HEADER & NAV --- */
+/* --- HEADER & NAVIGATION --- */
 .top-bar {
   background: #00916e;
   color: #fff;
-  padding: 8px 0 8px 30px;
-  font-size: 15px;
+  padding: 8px 30px;
+  font-size: 14px;
   display: flex;
   align-items: center;
-  gap: 30px;
-  font-weight: 500;
+  gap: 20px;
 }
-.top-date { letter-spacing: 1px; }
-.top-time { font-size: 15px; }
 
 .main-header {
   background: #111;
@@ -359,1219 +37,398 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 0 40px;
-  height: 70px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  height: 80px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
-.logo-area {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.logo-circle {
-  background: #00916e;
-  color: #fff;
-  font-weight: bold;
-  font-size: 22px;
-  border-radius: 50%;
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  letter-spacing: 1px;
-}
+
 .logo-text {
-  font-family: 'Inter', sans-serif;
   font-size: 2.3rem;
   font-weight: 800;
   letter-spacing: 1px;
-  text-transform: uppercase;
+  color: #1db954;
 }
-.all-caps {
-  text-transform: uppercase;
-}
-.main-header {
-  background: #111;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 40px;
-  height: 70px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-.left-align {
-  flex: 1 1 auto;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-.right-align, .header-auth {
-  flex: 1 1 auto;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 10px;
-}
-.main-nav {
-  flex: 2 1 auto;
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  justify-content: center;
-}
+
 .main-nav {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 15px;
 }
+
 .main-nav a {
   color: #fff;
   font-weight: 600;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 15px;
   padding: 8px 12px;
-  border-radius: 6px;
-  transition: background 0.2s;
-}
-.main-nav a:hover {
-  background: #222;
 }
 
-/* --- BUTTONS --- */
-.btn-green {
-  background: #00916e;
-  color: #fff !important;
-  border: none;
-  padding: 8px 22px;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 16px;
-  margin-right: 8px;
-  text-decoration: none;
-  transition: background 0.2s;
-  display: inline-block;
-}
-.btn-green:hover {
-  background: #007a5e;
-}
-.btn-white {
-  background: #fff;
-  color: #00916e !important;
-  border: 2px solid #00916e;
-  padding: 8px 22px;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 16px;
-  text-decoration: none;
-  transition: background 0.2s, color 0.2s;
-  display: inline-block;
-}
-.btn-white:hover {
-  background: #f4f6f8;
-  color: #007a5e !important;
-}
-
-/* --- HERO SECTION --- */
-.hero-section-new {
+/* --- AUTH PANELS --- */
+.auth-panel {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  background: #111 url('../images/football-bg.jpg') no-repeat right center/cover;
-  min-height: 420px;
-  padding: 0 40px;
-  position: relative;
-  margin-bottom: 30px;
-}
-.hero-content {
-  max-width: 600px;
-  z-index: 2;
-}
-.hero-title {
-  font-size: 3.2rem;
-  font-weight: 800;
-  color: #fff;
-  line-height: 1.1;
-  margin-bottom: 30px;
-  letter-spacing: 1px;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.18);
-}
-.hero-btns {
-  display: flex;
-  gap: 18px;
-}
-.hero-btn {
-  font-size: 18px;
-  padding: 12px 32px;
-}
-.hero-image {
-  width: 340px;
-  height: 420px;
-  background: url('../images/footballer.png') no-repeat center/contain;
-  z-index: 1;
-}
-
-#user-menu {
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 8px;
-}
-
-/* Animation: use opacity + transform for smooth toggling */
-.auth-panel {
-  transition: opacity 200ms ease, transform 200ms ease, visibility 200ms;
-  opacity: 1;
-  transform: translateY(0);
-  visibility: visible;
-}
-
-.auth-panel.hidden {
-  opacity: 0;
-  transform: translateY(-8px);
-  visibility: hidden;
-  pointer-events: none;
+  gap: 12px;
 }
 
 #user-email {
   color: #2ecc71;
   font-size: 14px;
-  display: block;
+  font-weight: 600;
+}
+
+/* --- BUTTONS --- */
+.btn-green, .btn-primary {
+  background: #00916e;
+  color: #fff !important;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  border: none;
+}
+
+.btn-white {
+  background: #fff;
+  color: #00916e !important;
+  border: 2px solid #00916e;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
 }
 
 .logout-btn {
   background: #e74c3c;
   color: white;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 5px;
-  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 6px;
   font-weight: bold;
-  font-size: 12px;
+  border: none;
+  cursor: pointer;
 }
 
-.logout-btn:hover {
-  background: #c0392b;
-}
+/* --- HERO SECTION (The Black Box Fix) --- */
+.hero-section-new {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #111;
+  min-height: 100px; /* Reduced to stop it being a massive black box */
+  padding: 40px;
+  margin-bottom: 30px;
+  color: white;
 }
 
+/* --- VIP IMAGE CARDS (Fixed Paths) --- */
+.vip-hero {
+  background-image: url('../images/XSJT2927.PNG'); /* Path fixed for CSS folder */
+  background-size: cover;
+  background-position: center;
+  min-height: 250px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.vip-hero-basketball {
+  background-image: url('../images/HKBE3378.PNG') !important; /* Path fixed for CSS folder */
+}
+
+/* Overlay to make text readable on top of images */
+.vip-hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.5); 
+  z-index: 1;
+}
+
+.vip-hero h4, .vip-hero p, .vip-hero a {
+  position: relative;
+  z-index: 2;
+}
+
+/* --- CONTENT CARDS (Mobile Mockup Style) --- */
 .container {
   padding: 20px;
-  max-width: 700px;
+  max-width: 800px;
   margin: auto;
 }
 
 .card {
   background: white;
-  padding: 20px;
+  padding: 25px;
   border-radius: 12px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.card h2 {
-  margin-bottom: 10px;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-}
-
-.card ul {
-  list-style: none;
-}
-
-.card ul li {
-  margin-bottom: 8px;
-}
-
-.vip-link {
-  display: block;
-  margin-top: 10px;
-  color: #1a73e8;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.locked {
-  text-align: center;
-}
-
-/* VIP hero section with background image */
-.vip-hero {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-image: url('../images/XSJT2927.PNG');
-  padding: 0;
-  min-height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.vip-overlay {
-  background: rgba(11, 28, 45, 0.8);
-  padding: 40px;
-  border-radius: 8px;
-  text-align: center;
-  max-width: 500px;
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
-}
-
-.vip-overlay h2 {
-  margin-bottom: 12px;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-}
-
-.vip-overlay p {
-  margin-bottom: 15px;
-  color: #ddd;
-}
-
-/* Basketball VVIP with different background image */
-.vip-hero-basketball {
-  background-image: url('../images/HKBE3378.PNG') !important;
-}
-
-.vip-actions {
-  margin-top: 12px;
-}
-
-.vip-subscribe {
-  background: #1a73e8;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.vip-subscribe:hover {
-  background: #1558b0;
-}
-
-/* Payment modal styles */
-.payment-modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1200;
-}
-
-.payment-modal-box {
-  background: #fff;
-  padding: 18px 20px;
-  border-radius: 10px;
-  max-width: 400px;
-  width: 90%;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-  text-align: center;
-}
-
-.payment-modal-box h3 {
-  margin-bottom: 8px;
-}
-
-.payment-modal-actions {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 14px;
-}
-
-.payment-modal-cancel {
-  background: #eee;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.payment-modal-confirm {
-  background: #1a73e8;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.payment-modal-confirm:hover { background: #1558b0; }
-
-/* Success page styles */
-.success-actions {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  margin-top: 12px;
-  flex-wrap: wrap;
-}
-
-/* Tips card styles */
-.tips-card {
-  background: #f9f9f9;
-  border-left: 4px solid #2ecc71;
-}
-
-.tips-odds {
-  font-weight: bold;
-  color: #e74c3c;
-  font-size: 16px;
-  margin: 8px 0 12px 0;
-}
-
-.tip-item {
-  display: flex;
-  gap: 12px;
-  margin: 12px 0;
-  padding: 8px 0;
-}
-
-.tip-number {
-  font-size: 20px;
-  min-width: 30px;
-}
-
-.tip-detail {
-  flex: 1;
-  font-size: 14px;
-}
-
-.tip-prediction {
-  color: #2ecc71;
-  font-weight: bold;
-}
-
-/* Results Table */
-.results-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 15px;
-  background: white;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.results-table thead {
-  background: #0b1c2d;
-  color: white;
-}
-
-.results-table thead th {
-  padding: 12px;
-  text-align: left;
-  font-weight: 600;
-  font-family: 'Poppins', sans-serif;
-  font-size: 14px;
-}
-
-.results-table tbody td {
-  padding: 12px;
-  border-bottom: 1px solid #eee;
-  font-size: 13px;
-}
-
-.results-table tbody tr:hover {
-  background: #f9f9f9;
-}
-
-.status-win {
-  color: #2ecc71;
-  font-weight: bold;
-  background: #d4edda;
-  padding: 4px 8px;
-  border-radius: 4px;
-  display: inline-block;
-}
-
-.status-loss {
-  color: #e74c3c;
-  font-weight: bold;
-  background: #f8d7da;
-  padding: 4px 8px;
-  border-radius: 4px;
-  display: inline-block;
-}
-
-/* Statistics Summary */
-.stats-summary {
-  margin-top: 20px;
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
-  margin-top: 15px;
-}
-
-.stat-box {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  text-align: center;
-  border: 2px solid #ddd;
-}
-
-.stat-box.win-stat {
-  border-color: #2ecc71;
-  background: #f0fdf4;
-}
-
-.stat-box.loss-stat {
-  border-color: #e74c3c;
-  background: #fef2f2;
-}
-
-.stat-number {
-  font-size: 32px;
-  font-weight: bold;
-  color: #0b1c2d;
-  font-family: 'Poppins', sans-serif;
-  margin-bottom: 5px;
-}
-
-.stat-box.win-stat .stat-number {
-  color: #2ecc71;
-}
-
-.stat-box.loss-stat .stat-number {
-  color: #e74c3c;
-}
-
-.stat-label {
-  color: #666;
-  font-size: 12px;
-  font-weight: 500;
-}
-
-/* Mobile responsive styles */
-@media (max-width: 768px) {
-  header {
-    padding: 12px;
-  }
-
-  header h1 {
-    font-size: 22px;
-    margin-bottom: 8px;
-  }
-
-  nav {
-    gap: 8px;
-  }
-
-  nav a {
-    font-size: 13px;
-    margin: 0 4px;
-  }
-
-  .hero-section {
-    padding: 25px 15px;
-    margin-bottom: 15px;
-    min-height: 300px;
-  }
-
-  .hero-content {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .hero-text {
-    min-width: auto;
-  }
-
-  .hero-section h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-
-  .hero-section p {
-    font-size: 14px;
-    margin-bottom: 15px;
-  }
-
-  .hero-overlay {
-    padding: 25px;
-    max-width: 90%;
-  }
-
-  .hero-overlay h2 {
-    font-size: 20px;
-  }
-
-  .hero-overlay p {
-    font-size: 14px;
-  }
-
-  .hero-cta {
-    gap: 8px;
-  }
-
-  .btn {
-    padding: 9px 14px;
-    font-size: 13px;
-  }
-
-  .features-grid,
-  .cta-section {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .feature-item,
-  .cta-item {
-    padding: 12px;
-  }
-
-  .feature-item h4,
-  .cta-item h4 {
-    font-size: 15px;
-  }
-
-  .feature-item p,
-  .cta-item p {
-    font-size: 12px;
-  }
-
-  .container {
-    padding: 10px;
-  }
-
-  .card {
-    padding: 12px;
-    margin-bottom: 12px;
-  }
-
-  .card h3 {
-    font-size: 16px;
-  }
-
-  .benefits-list li {
-    font-size: 13px;
-    padding: 6px 0;
-  }
-
-  #auth-buttons,
-  #user-menu {
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-    margin-left: 0;
-  }
-
-  #user-menu {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  #user-email {
-    font-size: 12px;
-  }
-
-  .logout-btn {
-    width: auto;
-    padding: 6px 10px;
-    font-size: 11px;
-  }
-
-  .vip-subscribe {
-    width: 100%;
-    padding: 9px 12px;
-    font-size: 13px;
-  }
-
-  .payment-modal-box {
-    padding: 15px;
-  }
-
-  .payment-modal-actions {
-    flex-direction: column;
-  }
-
-  .payment-modal-cancel,
-  .payment-modal-confirm {
-    width: 100%;
-    padding: 10px;
-  }
-
-  .success-actions {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .vip-link {
-    width: 100%;
-  }
-
-  .form-group input,
-  .form-group textarea {
-    font-size: 14px;
-  }
-
-  .submit-btn {
-    width: 100%;
-    padding: 10px;
-  }
-
-  nav {
-    gap: 10px;
-    flex-direction: column;
-  }
-
-  nav a {
-    margin: 0 5px;
-    font-size: 14px;
-  }
-
-  #auth-buttons,
-  #user-menu {
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-    margin-left: 0;
-  }
-
-  #user-menu {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  #user-email {
-    font-size: 12px;
-  }
-
-  .logout-btn {
-    padding: 6px 12px;
-    font-size: 13px;
-  }
-
-  .container {
-    padding: 12px;
-  }
-
-  .card {
-    padding: 15px;
-  }
-
-  .vip-subscribe {
-    padding: 8px 14px;
-    font-size: 13px;
-  }
-
-  .payment-modal-box {
-    padding: 15px 16px;
-  }
-
-  .payment-modal-actions {
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .payment-modal-cancel,
-  .payment-modal-confirm {
-    width: 100%;
-    padding: 10px;
-  }
-
-  .success-actions {
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .vip-link {
-    width: 100%;
-  }
-
-  .tip-item {
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-
-  .tip-number {
-    font-size: 18px;
-  }
-
-  .tip-detail {
-    font-size: 13px;
-    width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  header h1 {
-    font-size: 20px;
-  }
-
-  nav a {
-    font-size: 12px;
-    margin: 0 3px;
-  }
-
-  #auth-buttons,
-  #user-menu {
-    flex-direction: column;
-    width: 100%;
-    margin-left: 0;
-  }
-
-  #user-menu {
-    align-items: center;
-  }
-
-  .logout-btn {
-    width: 100%;
-    padding: 8px 10px;
-    font-size: 12px;
-  }
-
-  #user-email {
-    font-size: 11px;
-  }
-
-  .container {
-    padding: 8px;
-  }
-
-  .card {
-    padding: 12px;
-    margin-bottom: 12px;
-  }
-
-  .card h2 {
-    font-size: 18px;
-  }
-
-  .vip-subscribe {
-    width: 100%;
-    padding: 10px 8px;
-    font-size: 12px;
-  }
-
-  .payment-modal-box {
-    padding: 12px 14px;
-  }
-
-  .tip-number {
-    font-size: 16px;
-  }
-
-  .tips-odds {
-    font-size: 14px;
-  }
-}
-
-/* Contact form styles */
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.form-group label {
-  font-weight: bold;
-  color: #333;
-}
-
-.form-group input,
-.form-group textarea {
-  padding: 8px 10px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: #1a73e8;
-  box-shadow: 0 0 4px rgba(26, 115, 232, 0.3);
-}
-
-.submit-btn {
-  background: #2ecc71;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 14px;
-}
-
-.submit-btn:hover {
-  background: #27ae60;
-}
-
-.card h3 {
-  margin-top: 10px;
-  margin-bottom: 8px;
-}
-
-/* Homepage hero section */
-.hero-section {
-  background-image: url('../images/XSJT2927.PNG');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: white;
-  padding: 60px 20px;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  position: relative;
-  min-height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.hero-overlay {
-  background: rgba(11, 28, 45, 0.75);
-  padding: 40px;
-  border-radius: 8px;
-  text-align: center;
-  max-width: 600px;
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
-}
-
-.hero-overlay h2 {
-  font-size: 28px;
-  margin-bottom: 12px;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-}
-
-.hero-overlay p {
-  font-size: 16px;
-  margin-bottom: 20px;
-  color: #ddd;
-}
-
-.hero-cta {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-/* Button styles */
-.btn {
-  display: inline-block;
-  padding: 10px 18px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 200ms ease;
-  border: none;
-}
-
-.btn-primary {
-  background: #2ecc71;
-  color: white;
-}
-
-.btn-primary:hover {
-  background: #27ae60;
-  transform: translateY(-2px);
-}
-
-.btn-secondary {
-  background: #1a73e8;
-  color: white;
-}
-
-.btn-secondary:hover {
-  background: #1558b0;
-  transform: translateY(-2px);
-}
-
-.btn-sm {
-  padding: 8px 14px;
-  font-size: 13px;
-}
-
-/* Features grid */
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
-  margin-top: 12px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 .feature-item {
-  background: #f9f9f9;
+  background: #fff;
   padding: 15px;
+  margin-bottom: 12px;
   border-radius: 8px;
-  border-left: 4px solid #2ecc71;
+  border-left: 5px solid #1db954; /* Green accent line */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.03);
 }
 
-.feature-item h4 {
-  margin-bottom: 6px;
-  color: #0b1c2d;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-}
-
-.feature-item p {
-  font-size: 13px;
-  color: #666;
-  font-family: 'Inter', sans-serif;
-}
-
-/* Highlight card */
 .highlight-card {
-  background: linear-gradient(135deg, #f9f9f9 0%, #fff 100%);
-  border: 2px solid #2ecc71;
+  border: 2px solid #1db954;
 }
 
-.cta-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
-  margin-top: 12px;
+.link-purple {
+  color: #6f42c1;
+  text-decoration: none;
+  font-weight: 700;
+  display: block;
+  margin-top: 10px;
 }
 
-.cta-item {
-  background: white;
-  padding: 15px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 900px) {
+  .main-header { padding: 0 20px; }
+  .logo-text { font-size: 1.6rem; }
+  .main-nav { display: none; } /* Use mobile menu button instead */
+  .hero-section-new { padding: 20px; }
+}
+/* Fix for the Navigation Menu placement */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-nav {
+  display: flex; /* Ensures menu shows on desktop */
+  gap: 20px;
+}
+
+@media (max-width: 900px) {
+  .main-nav {
+    display: none; /* Hides menu on mobile to use the burger button */
+  }
+}
+/* Ensure the paths use ../ to get out of the css folder */
+.vip-hero {
+  background-image: url('../images/XSJT2927.PNG');
+  background-size: cover;
+  background-position: center;
+}
+
+.vip-hero-basketball {
+  background-image: url('../images/HKBE3378.PNG') !important;
+}
+/* Remove default bullets from all navigation and lists */
+nav, ul, li {
+  list-style: none !important;
+  list-style-type: none !important;
+  margin: 0;
+  padding: 0;
+}
+
+/* Specifically target the nav area if it persists */
+.main-nav, .logo-area {
+  display: flex;
+  list-style: none;
+}
+/* Ensure actions are on top of any overlays */
+.vip-actions {
+  position: relative;
+  z-index: 10;
+  pointer-events: auto !important; /* Forces the mouse to recognize the button */
+}
+
+.btn-white, .btn-green {
+  cursor: pointer !important;
+  position: relative;
+  z-index: 11;
+}
+
+/* Make sure the overlay doesn't steal the click */
+.vip-overlay {
+  pointer-events: none; /* Allows clicks to pass through to the buttons inside */
+}
+
+.vip-overlay h2, .vip-overlay p, .vip-overlay .vip-actions {
+  pointer-events: auto; /* Re-enables clicks for the content inside the box */
+}
+
+/* Container for the background */
+.tips-page-bg {
+    background-color: #f0f2f5;
+    padding: 15px;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* The White Header Card */
+.tips-header-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: left;
+}
+
+.tips-header-card h2 {
+    margin: 0;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* The Main Betting Ticket */
+.bet-ticket {
+    background: #fff;
+    border-radius: 12px;
+    border-left: 5px solid #1db954; /* The green side-bar */
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.ticket-top {
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+.ticket-top h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.total-odds {
+    color: #ff4d4d; /* Red color for odds */
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-top: 5px;
+    display: block;
+}
+
+/* Game Row Styling */
+.game-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.game-id {
+    background: #8e9db0; /* Blue-grey icon background */
+    color: #fff;
+    width: 26px;
+    height: 26px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+/* Container Background */
+body {
+  background-color: #f0f2f5;
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Header/Nav Adjustments */
+header {
+  background-color: #001529; /* Dark Navy from your screenshot */
+  padding: 10px 0;
   text-align: center;
 }
 
-.cta-item h4 {
-  margin-bottom: 6px;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
+.auth-panel {
+  background: #e9ecef;
+  padding: 8px;
+  border-radius: 20px;
+  margin: 10px auto;
+  width: fit-content;
 }
 
-.cta-item p {
-  font-size: 13px;
-  color: #666;
-  margin-bottom: 10px;
-  font-family: 'Inter', sans-serif;
+/* The Ticket Card */
+.bet-card {
+  background: #ffffff;
+  border-radius: 12px;
+  border-left: 6px solid #1db954; /* The Green Side Accent */
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  max-width: 500px;
+  margin: 20px auto;
 }
 
-/* Benefits list */
-.benefits-list {
-  list-style: none;
+.bet-card h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.odds {
+  color: #ff4d4d; /* Bright Red Odds */
+  font-weight: 800;
+  font-size: 1.2rem;
+  margin: 5px 0 20px 0;
+}
+
+/* Individual Match Rows */
+.match {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.match-number {
+  background: #8e9db0; /* Blue-Grey box from screenshot */
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  flex-shrink: 0;
+  font-size: 0.9rem;
+}
+
+.match-details {
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 
-.benefits-list li {
-  padding: 8px 0;
-  font-size: 14px;
+.teams {
+  font-weight: 700;
+  color: #222;
+  margin: 0;
+  font-size: 1rem;
 }
 
-/* Extra small screens (480px and below) */
-@media (max-width: 480px) {
-  header {
-    padding: 10px;
-  }
-
-  header h1 {
-    font-size: 18px;
-  }
-
-  nav {
-    gap: 6px;
-    flex-direction: column;
-  }
-
-  nav a {
-    font-size: 11px;
-    margin: 0 2px;
-  }
-
-  .hero-section {
-    padding: 20px 12px;
-    margin-bottom: 12px;
-    border-radius: 8px;
-    min-height: 250px;
-  }
-
-  .hero-content {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .hero-text h2 {
-    font-size: 18px;
-    margin-bottom: 8px;
-  }
-
-  .hero-text p {
-    font-size: 13px;
-    margin-bottom: 12px;
-  }
-
-  .hero-overlay {
-    padding: 20px;
-    max-width: 95%;
-  }
-
-  .hero-overlay h2 {
-    font-size: 18px;
-  }
-
-  .hero-overlay p {
-    font-size: 13px;
-  }
-
-  .hero-image img {
-    border-radius: 6px;
-  }
-
-  .hero-cta {
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .btn,
-  .btn-sm {
-    width: 100%;
-    padding: 10px 12px;
-    font-size: 12px;
-  }
-
-  .container {
-    padding: 6px;
-  }
-
-  .card {
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-  }
-
-  .card h2 {
-    font-size: 16px;
-  }
-
-  .card h3 {
-    font-size: 14px;
-    margin-bottom: 8px;
-  }
-
-  .features-grid,
-  .cta-section {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-
-  .feature-item,
-  .cta-item {
-    padding: 10px;
-  }
-
-  .feature-item h4,
-  .cta-item h4 {
-    font-size: 13px;
-  }
-
-  .benefits-list li {
-    font-size: 12px;
-    padding: 5px 0;
-  }
-
-  #auth-buttons,
-  #user-menu {
-    width: 100%;
-    margin-left: 0;
-    gap: 6px;
-  }
-
-  #user-email {
-    font-size: 10px;
-  }
-
-  .logout-btn {
-    width: 100%;
-    padding: 8px 6px;
-    font-size: 10px;
-  }
-
-  .vip-subscribe {
-    width: 100%;
-    padding: 8px 6px;
-    font-size: 11px;
-  }
-
-  .payment-modal-box {
-    padding: 12px;
-  }
-
-  .payment-modal-cancel,
-  .payment-modal-confirm {
-    width: 100%;
-    padding: 8px;
-    font-size: 12px;
-  }
-
-  .form-group input,
-  .form-group textarea {
-    padding: 10px;
-    font-size: 16px;
-  }
-
-  .submit-btn {
-    width: 100%;
-    padding: 10px;
-    font-size: 13px;
-  }
-
-  .tip-number {
-    font-size: 16px;
-    min-width: 26px;
-  }
-
-  .tip-detail {
-    font-size: 12px;
-  }
-
-  .tips-odds {
-    font-size: 13px;
-  }
-
-  .results-table {
-    font-size: 12px;
-  }
-
-  .results-table thead th {
-    padding: 8px 4px;
-  }
-
-  .results-table tbody td {
-    padding: 8px 4px;
-  }
-
-  .stat-box {
-    padding: 12px;
-  }
-
-  .stat-number {
-    font-size: 24px;
-  }
-
-  .stat-label {
-    font-size: 12px;
-  }
+.prediction {
+  color: #1db954; /* Green prediction text */
+  font-weight: 600;
+  margin: 2px 0 0 0;
+  font-size: 0.95rem;
 }
+
+/* Hidden Utility */
+.hidden { display: none; }
+

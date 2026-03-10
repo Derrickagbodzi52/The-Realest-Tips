@@ -1,11 +1,3 @@
-    <style>
-      .auth-large img {
-        width: 18px;
-        height: 18px;
-        vertical-align: middle;
-        margin-right: 0.4em;
-      }
-    </style>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,86 +5,82 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Realest Tips</title>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Inline fixes to ensure image visibility and header layout */
+    .hidden { display: none !important; }
+    
+    /* Ensure the logo and auth buttons don't squash each other */
+    .main-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #1db954;
+      text-decoration: none;
+    }
+
+    /* Style for the text on top of images */
+    .vip-hero h4 {
+      font-size: 1.5rem;
+      margin-bottom: 5px;
+      color: #fff;
+    }
+    .vip-hero p {
+      color: #ddd;
+      margin-bottom: 15px;
+    }
+
+    @media (max-width: 900px) {
+      .logo-text { font-size: 1.3rem; }
+      .main-nav { display: none; } /* Hidden on mobile, shown via JS */
+    }
+  </style>
 </head>
 <body>
 
 <header>
   <div class="top-bar">
-    <span class="top-time" id="topTime"></span>
+    <span class="top-time" id="current-date"></span>
   </div>
   <div class="main-header">
-      <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
-    <div class="logo-area left-align">
-      <span class="logo-text all-caps">THE REALEST TIPS</span>
+    <div class="logo-area">
+      <span class="logo-text">THE REALEST TIPS</span>
     </div>
-      <style>
-        .logo-text {
-          font-size: 2.5rem;
-          font-weight: 900;
-          letter-spacing: 0.12em;
-          color: #1db954;
-        }
-        @media (max-width: 600px) {
-          .logo-text {
-            font-size: 1.6rem;
-          }
-        }
-      </style>
-    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="bar"></span>
-      <span class="mobile-menu-label">MENU</span>
-      </button>
+    </button>
+
     <nav class="main-nav" id="mainNav">
       <a href="index.html">HOME</a>
       <a href="free-tips.html">Free Tips</a>
       <a href="football.html">Football VIP</a>
       <a href="past-result.html">Past Result</a>
-      <!-- Login and Sign Up links removed from main navigation -->
     </nav>
-    <div class="header-auth right-align" style="position:absolute; top:1.2rem; right:2rem; z-index:10;">
-      <div id="auth-buttons" class="auth-panel">
-        <a href="login.html" id="loginBtn" class="btn-green auth-large">LOG IN</a>
-        <a href="register.html" id="registerBtn" class="btn-white auth-large">Create Account</a>
-      </div>
-      <div id="user-menu" class="auth-panel hidden">
-        <span id="user-email"></span>
-        <button id="logoutBtn" class="logout-btn" style="display:none;">Sign Out</button>
-      </div>
+
+    <div id="auth-buttons" class="auth-panel">
+      <a href="login.html" class="btn-green">LOG IN</a>
+      <a href="register.html" class="btn-white">Create Account</a>
     </div>
-    <style>
-      .auth-large {
-        font-size: 1.25rem !important;
-        font-weight: 700;
-        padding: 0.6em 1.2em;
-      }
-      @media (max-width: 600px) {
-        .header-auth.right-align {
-          right: 0.5rem;
-        }
-        .auth-large {
-          font-size: 1rem !important;
-        }
-      }
-    </style>
+
+    <div id="user-menu" class="auth-panel hidden">
+      <span id="user-email"></span>
+      <button id="logoutBtn" class="logout-btn">Sign Out</button>
+    </div>
   </div>
 </header>
 
-
 <main class="container">
-  <section class="hero-section-new">
-    <div class="hero-content">
-      <div class="hero-btns">
-        <!-- ...existing code... -->
-      </div>
-    </div>
-    <div class="hero-image"></div>
-  </section>
-
-  <div class="card">
-    <h3>📊 What We Offer</h3>
-    <div class="features-grid">
+  <div class="card section-card">
+    <h3 class="section-title">📊 What We Offer</h3>
+    <div class="features-list">
       <div class="feature-item">
         <h4>🎯 Free Daily Tips</h4>
         <p>Get access to daily predictions on football and basketball matches</p>
@@ -101,133 +89,80 @@
         <h4>⭐ VVIP Premium</h4>
         <p>High-confidence tips with detailed analysis for serious bettors</p>
       </div>
-      <div class="feature-item">
-        <h4>📈 Smart Analysis</h4>
-        <p>Real-time odds analysis and expert insights</p>
-      </div>
-      <div class="feature-item">
-        <h4>🏆 Expert Team</h4>
-        <p>Seasoned analysts with proven track record</p>
-      </div>
     </div>
   </div>
 
   <div class="card highlight-card">
-    <h3>🔥 Get Started Today</h3>
-    <div class="cta-section">
-      <div class="cta-item">
+    <h3 class="section-title">🔥 Get Started Today</h3>
+    <div class="cta-vertical-list">
+      
+      <div class="cta-card">
         <h4>Free Tips</h4>
         <p>Start with our free daily predictions</p>
-        <a href="free-tips.html" class="btn btn-sm">View Free Tips</a>
+        <a href="free-tips.html" class="link-purple">View Free Tips</a>
       </div>
-      <div class="cta-item">
+
+      <div class="cta-card vip-hero">
         <h4>Football VVIP</h4>
         <p>Premium football predictions & analysis</p>
-        <a href="football.html" class="btn btn-sm">Subscribe Now</a>
+        <a href="football.html" class="btn-green">Subscribe Now</a>
       </div>
-      <div class="cta-item">
+
+      <div class="cta-card vip-hero vip-hero-basketball">
         <h4>Basketball VVIP</h4>
         <p>Exclusive basketball tips & strategies</p>
-        <a href="basketball.html" class="btn btn-sm">Subscribe Now</a>
+        <a href="basketball.html" class="btn-green">Subscribe Now</a>
       </div>
+
     </div>
   </div>
-
-  <div class="card">
-    <h3>💡 Why Choose Us?</h3>
-    <ul class="benefits-list">
-      <li>✔ <strong>Accurate Predictions</strong> - Data-driven analysis</li>
-      <li>✔ <strong>Expert Team</strong> - Seasoned analysts</li>
-      <li>✔ <strong>Real-Time Updates</strong> - Live odds and insights</li>
-      <li>✔ <strong>24/7 Support</strong> - Always here to help</li>
-    </ul>
-  </div>
-
-  <footer style="margin-top: 2rem; text-align: center; padding: 2rem 0; background: #f4f6f8; border-top: 1px solid #e0e0e0;">
-    <div style="margin-bottom: 0.8em;">
-      <a href="about-us.html" style="color: #007bff; font-weight: 500; text-decoration: underline; margin-right: 1.5em;">About Us</a>
-      <a href="contact-us.html" style="color: #007bff; font-weight: 500; text-decoration: underline; margin-right: 1.5em;">Contact Support</a>
-      <!-- Free Tips link moved to main navigation -->
-    </div>
-    <div style="color: #888; font-size: 0.95em;">&copy; 2026 The Realest Tips. All rights reserved.</div>
-  </footer>
 </main>
 
-<!-- SCRIPTS -->
-<script src="js/main.js"></script>
-<script src="js/firebase.js" type="module"></script>
+<footer style="margin-top: 2rem; text-align: center; padding: 2rem 0; background: #f4f6f8; border-top: 1px solid #e0e0e0;">
+  <div>
+    <a href="about-us.html" style="margin-right: 1.5em; text-decoration: none;">About Us</a>
+    <a href="contact-us.html" style="text-decoration: none;">Contact Support</a>
+  </div>
+  <p style="color: #888; margin-top: 10px;">&copy; 2026 The Realest Tips. All rights reserved.</p>
+</footer>
 
 <script type="module">
-// Mobile menu toggle with overlay and scroll lock
-const mobileNavOverlay = document.getElementById('mobileNavOverlay');
-if (mobileMenuBtn && mainNav && mobileNavOverlay) {
-  function openMobileMenu() {
-    mainNav.classList.add('show-mobile-nav');
-    mobileMenuBtn.classList.add('open');
-    mobileNavOverlay.classList.add('show-overlay');
-    document.body.classList.add('no-scroll');
-  }
-  function closeMobileMenu() {
-    mainNav.classList.remove('show-mobile-nav');
-    mobileMenuBtn.classList.remove('open');
-    mobileNavOverlay.classList.remove('show-overlay');
-    document.body.classList.remove('no-scroll');
-  }
-  mobileMenuBtn.addEventListener('click', () => {
-    if (mainNav.classList.contains('show-mobile-nav')) {
-      closeMobileMenu();
+  import { auth } from "./js/firebase.js";
+  import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+  const authButtons = document.getElementById("auth-buttons");
+  const userMenu = document.getElementById("user-menu");
+  const userEmail = document.getElementById("user-email");
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      authButtons.classList.add('hidden');
+      userMenu.classList.remove('hidden');
+      if (userEmail) userEmail.textContent = user.email;
     } else {
-      openMobileMenu();
+      authButtons.classList.remove('hidden');
+      userMenu.classList.add('hidden');
     }
   });
-  mobileNavOverlay.addEventListener('click', closeMobileMenu);
-  // Close menu when a nav link is clicked (mobile only)
-  mainNav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      if (window.innerWidth <= 900) {
-        closeMobileMenu();
-      }
-    });
+
+  logoutBtn.addEventListener("click", async () => {
+    await signOut(auth);
+    window.location.reload(); 
   });
-  // Close on Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && mainNav.classList.contains('show-mobile-nav')) {
-      closeMobileMenu();
-    }
-  });
-}
-import { auth } from "./js/firebase.js";
-import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-const authButtons = document.getElementById("auth-buttons");
-const userMenu = document.getElementById("user-menu");
-const userEmail = document.getElementById("user-email");
-const logoutBtn = document.getElementById("logoutBtn");
+  // Mobile Menu
+  const btn = document.getElementById('mobileMenuBtn');
+  const nav = document.getElementById('mainNav');
+  btn.onclick = () => nav.classList.toggle('show-mobile-nav');
+</script>
 
-// Hide logout button by default
-logoutBtn.style.display = "none";
-
-onAuthStateChanged(auth, user => {
-  if (user) {
-    authButtons.classList.add('hidden');
-    userMenu.classList.remove('hidden');
-    userEmail.textContent = user.email;
-    logoutBtn.style.display = "inline-block";
-  } else {
-    authButtons.classList.remove('hidden');
-    userMenu.classList.add('hidden');
-    userEmail.textContent = '';
-    logoutBtn.style.display = "none";
-  }
-});
-
-logoutBtn.addEventListener("click", () => {
-  signOut(auth).then(() => {
-    window.location.href = "index.html";
-  }).catch((error) => {
-    alert(error.message);
-  });
-});
+<script>
+  // Clock
+  setInterval(() => {
+    const now = new Date();
+    document.getElementById("current-date").textContent = now.toLocaleString();
+  }, 1000);
 </script>
 
 </body>
